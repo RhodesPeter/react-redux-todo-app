@@ -1,1 +1,23 @@
-/* Add css */
+body {
+  background-color: #FFA54F;
+}
+
+.todo {
+  margin: 100px auto 0;
+  text-align: center;
+  width: 350px;
+}
+
+.todo__entry {
+  margin-bottom: 15px;
+}
+
+.todo__list {
+  background-color: pink;
+  list-style: none;
+  padding: 0;
+}
+
+.todo__item {
+  padding: 5px 0 5px 0;
+}
