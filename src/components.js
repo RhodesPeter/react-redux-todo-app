@@ -31,14 +31,19 @@ export function TodoList(props) {
     <div className='todo'>
       <input type='text'
              className='todo__entry'
-             placeholder='Add todo'
+             tabindex='1'
+             placeholder='Add to-do'
              onKeyDown={onSubmit} />
       <ul className='todo__list'>
-        {todos.map(t => (
+        {todos.map((t, i) => (
           <li key={t.get('id')}
               className='todo__item'
+              tabIndex={i+2}
               onClick={toggleClick(t.get('id'))}>
             <Todo todo={t.toJS()} />
+            <button className="todo__item__button">
+              X
+            </button>
           </li>
         ))}
       </ul>

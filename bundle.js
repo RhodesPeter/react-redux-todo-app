@@ -28543,18 +28543,25 @@ function TodoList(props) {
     { className: 'todo' },
     _react2.default.createElement('input', { type: 'text',
       className: 'todo__entry',
-      placeholder: 'Add todo',
+      tabindex: '1',
+      placeholder: 'Add to-do',
       onKeyDown: onSubmit }),
     _react2.default.createElement(
       'ul',
       { className: 'todo__list' },
-      todos.map(function (t) {
+      todos.map(function (t, i) {
         return _react2.default.createElement(
           'li',
           { key: t.get('id'),
             className: 'todo__item',
+            tabIndex: i + 2,
             onClick: toggleClick(t.get('id')) },
-          _react2.default.createElement(Todo, { todo: t.toJS() })
+          _react2.default.createElement(Todo, { todo: t.toJS() }),
+          _react2.default.createElement(
+            'button',
+            { className: 'todo__item__button' },
+            'X'
+          )
         );
       })
     )
