@@ -1,5 +1,5 @@
 body {
-  background-color: #FFA54F;
+  background-color: hsl(38, 96%, 62%);
 }
 
 .todo {
@@ -9,15 +9,55 @@ body {
 }
 
 .todo__entry {
+  border: none;
+  border-radius: 3px;
+  font-family: "Helvetica", Georgia, sans-serif;
+  font-size: 20px;
+  height: 25px;
   margin-bottom: 15px;
+  outline: none;
+  padding: 10px;
+  width: 270px;
 }
 
 .todo__list {
-  background-color: pink;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 3px;
+  font-family: "Helvetica", Georgia, sans-serif;
+  font-size: 20px;
   list-style: none;
   padding: 0;
 }
 
 .todo__item {
+  cursor: pointer;
   padding: 5px 0 5px 0;
+}
+
+.todo__item:hover,
+.todo__item:active,
+.todo__item:focus {
+  background-color: hsl(357, 96%, 93%);
+  outline: none;
+}
+
+.todo__item:active .todo__item__button,
+.todo__item:focus .todo__item__button {
+  background-color: hsl(357, 96%, 93%);
+  border: none;
+  border-radius: 50%;
+  bottom: 5px;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  float: right;
+  left: 30px;
+  margin: 4px 0 0 7px;
+  outline: none;
+  padding: 5px 8px;
+  position: relative;
+}
+
+.todo__item__button {
+  display: none;
 }
