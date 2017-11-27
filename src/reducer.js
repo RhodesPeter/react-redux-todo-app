@@ -14,6 +14,8 @@ export default function reducer(todos=init, action) {
           return t;
         }
       });
+    case 'DELETE_TODO':
+      return todos.filter(t => t.get('id') !== action.payload);
     default:
       return todos;
   }
