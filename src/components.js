@@ -11,7 +11,7 @@ export function Todo(props) {
 }
 
 export function TodoList(props) {
-  const { todos, toggleTodo, addTodo } = props;
+  const { todos, toggleTodo, addTodo, deleteTodo } = props;
 
   const onSubmit = (event) => {
     const input = event.target;
@@ -26,12 +26,13 @@ export function TodoList(props) {
   };
 
   const toggleClick = id => event => toggleTodo(id);
+  const deleteClick = id => event => deleteTodo(id);
 
   return (
     <div className='todo'>
       <input type='text'
              className='todo__entry'
-             tabindex='1'
+             tabIndex='1'
              placeholder='Add to-do'
              onKeyDown={onSubmit} />
       <ul className='todo__list'>
@@ -41,8 +42,9 @@ export function TodoList(props) {
               tabIndex={i+2}
               onClick={toggleClick(t.get('id'))}>
             <Todo todo={t.toJS()} />
-            <button className="todo__item__button">
-              X
+            <button
+              className="todo__item__button"
+              onClick={deleteClick(t.get('id'))}>
             </button>
           </li>
         ))}

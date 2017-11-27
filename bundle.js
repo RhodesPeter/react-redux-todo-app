@@ -23454,6 +23454,10 @@ function reducer() {
           return t;
         }
       });
+    case 'DELETE_TODO':
+      return todos.filter(function (t) {
+        return t.get('id') !== action.payload;
+      });
     default:
       return todos;
   }
@@ -28472,6 +28476,9 @@ var TodoList = exports.TodoList = (0, _reactRedux.connect)(function mapStateToPr
     },
     toggleTodo: function toggleTodo(id) {
       return dispatch((0, _actions.toggleTodo)(id));
+    },
+    deleteTodo: function deleteTodo(id) {
+      return dispatch((0, _actions.deleteTodo)(id));
     }
   };
 })(components.TodoList);
@@ -28517,7 +28524,8 @@ function Todo(props) {
 function TodoList(props) {
   var todos = props.todos,
       toggleTodo = props.toggleTodo,
-      addTodo = props.addTodo;
+      addTodo = props.addTodo,
+      deleteTodo = props.deleteTodo;
 
 
   var onSubmit = function onSubmit(event) {
@@ -28537,13 +28545,18 @@ function TodoList(props) {
       return toggleTodo(id);
     };
   };
+  var deleteClick = function deleteClick(id) {
+    return function (event) {
+      return deleteTodo(id);
+    };
+  };
 
   return _react2.default.createElement(
     'div',
     { className: 'todo' },
     _react2.default.createElement('input', { type: 'text',
       className: 'todo__entry',
-      tabindex: '1',
+      tabIndex: '1',
       placeholder: 'Add to-do',
       onKeyDown: onSubmit }),
     _react2.default.createElement(
@@ -28557,11 +28570,9 @@ function TodoList(props) {
             tabIndex: i + 2,
             onClick: toggleClick(t.get('id')) },
           _react2.default.createElement(Todo, { todo: t.toJS() }),
-          _react2.default.createElement(
-            'button',
-            { className: 'todo__item__button' },
-            'X'
-          )
+          _react2.default.createElement('button', {
+            className: 'todo__item__button',
+            onClick: deleteClick(t.get('id')) })
         );
       })
     )
@@ -28580,6 +28591,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.addTodo = addTodo;
 exports.toggleTodo = toggleTodo;
+exports.deleteTodo = deleteTodo;
 var uid = function uid() {
   return Math.random().toString(34).slice(2);
 };
@@ -28598,6 +28610,13 @@ function addTodo(text) {
 function toggleTodo(id) {
   return {
     type: 'TOGGLE_TODO',
+    payload: id
+  };
+}
+
+function deleteTodo(id) {
+  return {
+    type: 'DELETE_TODO',
     payload: id
   };
 }
