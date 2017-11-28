@@ -5,7 +5,13 @@ body {
 .todo {
   margin: 100px auto 0;
   text-align: center;
-  width: 350px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .todo {
+    width: 350px;
+  }
 }
 
 .todo__entry {
@@ -16,7 +22,7 @@ body {
   height: 25px;
   outline: none;
   padding: 10px;
-  width: 270px;
+  width: 80%;
 }
 
 .todo__list {
@@ -33,6 +39,12 @@ body {
   margin-bottom: 5px;
   padding: 5px 0 5px 0;
   position: relative;
+  width: 100%;
+
+  transition: width 0.8s ease;
+  -webkit-transition: width 0.8s ease;
+  -moz-transition: width 0.8s ease;
+  -o-transition: width 0.8s ease;
 }
 
 .todo__item:hover,
@@ -40,6 +52,10 @@ body {
 .todo__item:focus {
   background-color: hsl(357, 96%, 93%);
   outline: none;
+}
+
+.todo__item:focus {
+  width: 90%;
 }
 
 .todo__item:active .todo__item__button,
