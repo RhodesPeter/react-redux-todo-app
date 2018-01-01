@@ -46,6 +46,10 @@ export function TodoList(props) {
               className="todo__item__button"
               onClick={deleteClick(t.get('id'))}>
             </button>
+            <button
+              className="todo__item__button todo__item__button--edit"
+              onClick={deleteClick(t.get('id'))}>
+            </button>
           </li>
         ))}
       </ul>
