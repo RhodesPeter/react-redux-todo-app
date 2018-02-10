@@ -28572,9 +28572,6 @@ function TodoList(props) {
           _react2.default.createElement(Todo, { todo: t.toJS() }),
           _react2.default.createElement('button', {
             className: 'todo__item__button',
-            onClick: deleteClick(t.get('id')) }),
-          _react2.default.createElement('button', {
-            className: 'todo__item__button todo__item__button--edit',
             onClick: deleteClick(t.get('id')) })
         );
       })
